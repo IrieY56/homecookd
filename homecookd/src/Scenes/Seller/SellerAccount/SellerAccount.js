@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import OrderList from './OrderList';
 
 class SellerAccount extends Component{
   constructor(props) {
@@ -8,11 +9,12 @@ class SellerAccount extends Component{
   }
 
   componentDidMount(){
-    
+
   }
   render(){
     return(
       <div>
+        <OrderList />
       </div>
     )
   }
