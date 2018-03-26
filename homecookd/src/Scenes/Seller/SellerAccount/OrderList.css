@@ -1,8 +1,10 @@
-.container {
+.orderListStyle {
   max-height: 30vh;
-  overflow: scroll;
+  overflow: auto;
   width: 80vw;
-  margin-top: 1.6vh;
+  margin: 1.6vh auto 0 auto;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgba(100, 100, 100, 0.5);
 }
 
 .itemStyle {

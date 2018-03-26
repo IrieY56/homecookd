@@ -5,7 +5,7 @@ import './OrderList.css';
 
 const url = 'http://localhost:3001/api';
 const api_token = localStorage.getItem('api_token');
-var sellerOrders = ['order1', 'order2', 'order3', 'order4', 'order5', 'order6', 'order7', 'order8', 'order9'];
+var sellerOrders = ['order1', 'order2'];
 
 function getOrders(api_token){
   return axios.post(url + "/auth/information/seller", {
@@ -14,6 +14,10 @@ function getOrders(api_token){
   .then(function(response) {
     console.log(response.data);
   })
+}
+
+const orderListSegmentStyle = {
+  backgroundColor: 'rgb(247, 247, 247)'
 }
 
 class OrderList extends Component {
@@ -31,8 +35,8 @@ class OrderList extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Segment>
+      <div className="orderListStyle">
+        <Segment style={orderListSegmentStyle}>
           {
             this.state.orders.map((order, i) => <div className="itemStyle" key={i}>{order}<Divider segment/></div>)
           }
