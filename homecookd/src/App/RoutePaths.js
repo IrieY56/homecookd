@@ -15,8 +15,8 @@ import SellerProfileEdit from '../Scenes/Seller/SellerAccount/SellerProfileEdit'
 import AccountPage from '../Scenes/Account/MyAccount/AccountPage';
 import StorePage from '../Scenes/Store/StorePage';
 import SellerAccount from '../Scenes/Seller/SellerAccount/SellerAccount';
-
 import SellerList from '../Scenes/Seller/SellerSearch/SellerList';
+import Cart from '../Scenes/Cart/Cart';
 
 // ADMIN Imports
 
@@ -42,6 +42,7 @@ const RoutePaths= () => (
     <Route path = '/Store/:sellerID' component = {StorePage}/>
     <Route path = '/MySellerPortal' component = {SellerAccount}/>
     <Route path = '/Sellers' component = {SellerList}/>
+    <Route path = '/Cart' component = {Cart}/>
 
 
     {/* ADMIN RoutePaths */}

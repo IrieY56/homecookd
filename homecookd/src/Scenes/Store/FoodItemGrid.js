@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {Card} from 'semantic-ui-react'
+import { Card, Button, Image } from 'semantic-ui-react'
 import {getFoodItemsBySellerID} from '../../Utils/storeData.js';
+import { connect } from 'react-redux';
 
 const FoodItemGridStyle = {
-  width: '500px',
+  width: '570px',
   margin: '0 auto',
   height: 0
-
-
 }
 
 class FoodItemGrid extends Component{
@@ -16,6 +15,12 @@ class FoodItemGrid extends Component{
     this.state = {
       foodItems : []
     };
+
+    this.addCart = this.addCart.bind(this);
+  }
+
+  addCart(id){
+    alert(id);
   }
 
   componentDidMount(){
@@ -37,13 +42,28 @@ class FoodItemGrid extends Component{
       <div>
         <Card.Group style={FoodItemGridStyle} itemsPerRow={3}>
           {
-          this.state.foodItems.map(function(foodItem) {
-              return <Card style={style} raised image={src} description={foodItem.name}/>
-          })
+          this.state.foodItems.map(foodItem =>
+            <Card style={style} raised>
+              <Card.Content>
+                <Image src={src} />
+                <Card.Description>{foodItem.name} </Card.Description>
+              </Card.Content>
+              <Card.Content>
+                <div>
+                  <Button onClick={() => this.addCart(foodItem._id)} size='mini' primary>Add to Cart</Button>
+                </div>
+              </Card.Content>
+            </Card>
+          )
         }
         </Card.Group>
       </div>
     )
   }
 }
-export default FoodItemGrid;
+
+function mapDispatchToProps(){
+  
+}
+
+export default connect(null, mapDispatchToProps)(FoodItemGrid);

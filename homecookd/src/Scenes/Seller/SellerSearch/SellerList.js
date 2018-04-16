@@ -65,7 +65,7 @@ class SellerList extends Component {
                   <Card.Description>{seller.description}</Card.Description>
                   <Card.Meta  style={deliveryFeeStyle}><a href={'/store/'+seller._id} ><Button color='green'>Visit</Button></a></Card.Meta>
                 </Card.Content>
-            </Card>
+              </Card>
             )
           }
         </Card.Group>
