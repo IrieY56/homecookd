@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Button, Image } from 'semantic-ui-react'
 import {getFoodItemsBySellerID} from '../../Utils/storeData.js';
 import { connect } from 'react-redux';
+import { addCart } from '../../actions/cartActions';
 
 const FoodItemGridStyle = {
   width: '570px',
@@ -16,11 +17,11 @@ class FoodItemGrid extends Component{
       foodItems : []
     };
 
-    this.addCart = this.addCart.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
-  addCart(id){
-    alert(id);
+  addToCart = (id) => {
+    this.props.addToCart(id);
   }
 
   componentDidMount(){
@@ -50,7 +51,7 @@ class FoodItemGrid extends Component{
               </Card.Content>
               <Card.Content>
                 <div>
-                  <Button onClick={() => this.addCart(foodItem._id)} size='mini' primary>Add to Cart</Button>
+                  <Button onClick={() => this.addToCart(foodItem._id)} size='mini' primary>Add to Cart</Button>
                 </div>
               </Card.Content>
             </Card>
@@ -62,8 +63,8 @@ class FoodItemGrid extends Component{
   }
 }
 
-function mapDispatchToProps(){
-  
+const mapDispatchToProps = {
+  addToCart: addCart
 }
 
 export default connect(null, mapDispatchToProps)(FoodItemGrid);
