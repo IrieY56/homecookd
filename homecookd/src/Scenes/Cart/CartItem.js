@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getFoodItem } from '../../Utils/storeData';
+import { Card, Image, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 class CartItem extends Component{
   constructor(props){
@@ -27,9 +29,20 @@ class CartItem extends Component{
 
   render() {
     return (
-      <div>{this.props.orderId}</div>
+      <Card>
+        <Card.Content >
+          <Image size='small' floated='right' src={this.state.image}/>
+          <Card.Header>{this.state.name}</Card.Header>
+          <Card.Meta>{this.state.price}</Card.Meta>
+          <Button color='black' size='mini'>Delete</Button>
+        </Card.Content>
+      </Card>
     )
   }
 }
 
-export default CartItem;
+const mapDispatchToProps = {
+
+}
+
+export default connect(null, mapDispatchToProps)(CartItem);

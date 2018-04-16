@@ -5,6 +5,8 @@ const initialState = {
 }
 
 function cartReducer(state=initialState, action){
+  let cart = [];
+
   switch(action.type){
     case ADD_CART:
       var newState = {...state};
@@ -13,10 +15,10 @@ function cartReducer(state=initialState, action){
         cart: [...newState.cart, {order: action.order}]
       }
     case REMOVE_CART:
-      var cart = state.cart.filter(val => val.id !== action.id);
+      cart = state.cart.filter(val => val.id !== action.id);
       return {...state, cart}
     case CLEAR_CART:
-      var cart = [];
+      cart = [];
       return {...state, cart}
     default:
       return state;

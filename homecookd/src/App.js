@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import RoutePaths from './App/RoutePaths'
 import LoggedInMenu from './Scenes/Home/LoggedInMenu';
-import Cart from './Scenes/Cart/Cart';
+import CartButton from './Scenes/Cart/CartButton';
 
 import Drawer from 'material-ui/Drawer'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
@@ -58,34 +58,33 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-
-      <AppBar
+        <AppBar
           title="HomeCookd"
           iconElementRight={this.props.logged ? <LoggedInMenu /> : <Login />}
-          onLeftIconButtonClick={this.handleToggle}/>
+          onLeftIconButtonClick={this.handleToggle}
+        />
 
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.state.open}
-            onRequestChange={(open) => this.setState({open})}
-          >
-            <MenuItem onClick={this.handleClose} href="/#">Home</MenuItem>
-            <MenuItem onClick={this.handleClose}>Order</MenuItem>
-            <MenuItem onClick={this.handleClose} href="/Menu">Menu</MenuItem>
-            <MenuItem onClick={this.handleClose}>Location</MenuItem>
-            <MenuItem onClick={this.handleClose}>Refresh</MenuItem>
-            <MenuItem onClick={this.handleClose} href="/AboutUs">About Us</MenuItem>
-            <MenuItem onClick={this.handleClose}>Help</MenuItem>
+        <CartButton />
 
-            {!this.props.logged && <MenuItem  onClick={this.handleClose} href="/auth/loginSeller">Login As a Seller</MenuItem>}
-            {!this.props.logged && <MenuItem onClick={this.handleClose} href="/auth/registerSeller">Register As a Seller</MenuItem>}
+        <Drawer
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={(open) => this.setState({open})}
+        >
+          <MenuItem onClick={this.handleClose} href="/#">Home</MenuItem>
+          <MenuItem onClick={this.handleClose}>Order</MenuItem>
+          <MenuItem onClick={this.handleClose} href="/Menu">Menu</MenuItem>
+          <MenuItem onClick={this.handleClose}>Location</MenuItem>
+          <MenuItem onClick={this.handleClose}>Refresh</MenuItem>
+          <MenuItem onClick={this.handleClose} href="/AboutUs">About Us</MenuItem>
+          <MenuItem onClick={this.handleClose}>Help</MenuItem>
 
-
-          </Drawer>
+          {!this.props.logged && <MenuItem  onClick={this.handleClose} href="/auth/loginSeller">Login As a Seller</MenuItem>}
+          {!this.props.logged && <MenuItem onClick={this.handleClose} href="/auth/registerSeller">Register As a Seller</MenuItem>}
+        </Drawer>
         <RoutePaths/>
-        </MuiThemeProvider>
-
+      </MuiThemeProvider>
     );
   }
 }
