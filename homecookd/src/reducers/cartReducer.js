@@ -15,7 +15,9 @@ function cartReducer(state=initialState, action){
         cart: [...newState.cart, action.order]
       }
     case REMOVE_CART:
-      cart = state.cart.filter(val => val !== action.id);
+      let index = state.cart.findIndex(id => id === action.id);
+      cart = state.cart.slice(0);
+      cart.splice(index, 1);
       return {...state, cart}
     case CLEAR_CART:
       cart = [];

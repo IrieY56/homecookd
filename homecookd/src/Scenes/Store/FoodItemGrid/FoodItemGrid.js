@@ -62,12 +62,9 @@ class FoodItemGrid extends Component{
     const style={margin:5}
     return(
       <div>
-
-      {/* <FoodGridMagnify open={this.state.open} handleClose={this.handleClose}/> */}
+        {/* <FoodGridMagnify open={this.state.open} handleClose={this.handleClose}/> */}
         <Card.Group style={FoodItemGridStyle} itemsPerRow={3}>
-          {
-            this.state.FoodItemGrid
-          }
+          {this.state.FoodItemGrid}
         </Card.Group>
       </div>
     )
