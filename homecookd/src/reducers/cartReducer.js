@@ -15,7 +15,9 @@ function cartReducer(state=initialState, action){
         cart: [...newState.cart, {order: action.order}]
       }
     case REMOVE_CART:
+      console.log(cart);
       cart = state.cart.filter(val => val.id !== action.id);
+      console.log(cart);
       return {...state, cart}
     case CLEAR_CART:
       cart = [];
