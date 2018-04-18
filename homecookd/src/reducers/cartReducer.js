@@ -12,12 +12,10 @@ function cartReducer(state=initialState, action){
       var newState = {...state};
       return{
         ...newState,
-        cart: [...newState.cart, {order: action.order}]
+        cart: [...newState.cart, action.order]
       }
     case REMOVE_CART:
-      console.log(cart);
-      cart = state.cart.filter(val => val.id !== action.id);
-      console.log(cart);
+      cart = state.cart.filter(val => val !== action.id);
       return {...state, cart}
     case CLEAR_CART:
       cart = [];

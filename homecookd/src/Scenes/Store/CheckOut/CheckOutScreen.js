@@ -26,8 +26,8 @@ class CheckOutScreen extends Component {
         <Modal.Content scrolling>
           <Item.Group relaxed divided unstackable>
             {
-              Object.values(this.props.cart)[0].map(cart =>
-                <CheckOutItem key={cart.order} orderId={cart.order} />
+              this.props.cart.cart.map(order =>
+                <CheckOutItem key={order} orderId={order} />
               )
             }
           </Item.Group>
