@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import history from '../../../Utils/history';
 import { Button, Modal, Header, Image, Item } from 'semantic-ui-react';
 import CheckOut from './CheckOut';
 import CheckOutItem from './CheckOutItem';
 import { connect } from 'react-redux';
+import { clearCart } from '../../../actions/cartActions';
 import { createOrder } from '../../../Utils/storeData';
-import history from '../../../Utils/history'
 
 class CheckOutScreen extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class CheckOutScreen extends Component {
     if(localStorage.getItem('api_token') !== null) {
       return localStorage.getItem('api_token');
     } else {
-      // redirect to login page
+      // redirect to login page if user is not logged in
       history.push('/Auth/Login');
     }
   }
@@ -29,7 +30,17 @@ class CheckOutScreen extends Component {
     let user_api_token = this.getUserApiToken();
     let seller_id = this.props.seller_id;
     let foodItems = this.props.cart.cart;
-    createOrder(user_api_token, seller_id, foodItems);
+    createOrder(user_api_token, seller_id, foodItems)
+      .then(res => {
+        this.clearCart();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  clearCart() {
+    this.props.clearCart();
   }
 
   state = { open: false }
@@ -38,7 +49,6 @@ class CheckOutScreen extends Component {
 
 
   render() {
-
     return (
       <Modal open={this.props.open} >
         <Modal.Content scrolling>
@@ -68,4 +78,8 @@ const mapStateToProps = (reduxState) => {
   }
 }
 
-export default connect(mapStateToProps)(CheckOutScreen);
+const mapDispatchToProps = {
+  clearCart: clearCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckOutScreen);

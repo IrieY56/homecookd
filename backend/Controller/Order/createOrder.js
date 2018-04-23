@@ -84,7 +84,7 @@ function updateSellerAndUserOrders(user_id, seller_id, tempOrder, res){
                         if (err) {
                             res.status(400).json("contact addMsg error: " + err);
                         }else{
-                            res.json({success: true, message: "Sucessfully order places", data: tempOrder});
+                            res.json({success: true, message: "Sucessfully placed order", data: tempOrder});
                         }
                     }
                 );
